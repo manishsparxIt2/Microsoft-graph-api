@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+{% extends 'base.html' %} {% block content %}
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+       
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% include 'top.html' %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Inbox Emails</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  
+                                 
+                                    <thead>
+                                        <tr>
+                                            <th>Email From</th>
+                                            <th>Emal To</th>
+                                            <th>Subject</th>
+                                            <th>Is Flagged</th>
+                                            <th>Key Word</th>
+                                            <th>Run Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                        {% for row in data %}
+                                        <tr>
+                                            <td>{{row['email_from']}}</td>
+                                            <td>{{row['email_to']}}</td>
+                                            <td>{{row['email_subject']}}</td>
+                                            <td>{{row['is_flagged']}}</td>
+                                            <td>{{row['flagged_keywored']}}</td>
+                                            <td>{{row['run_date'] }} </td>
+                                            <td>
+
+                                         
+                                        
+                                        <button class="btn btn-warning btn-icon-split" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{row['id']}}"> <span class="icon text-white-50">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span><span class="text">View</span></button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{row['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{row['id']}}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel{{row['id']}}">Email</h5>
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        From : {{row['email_from']}}<br><br>
+                                                        TO : {{row['email_to']}}<br><br>
+                                                        Subject : {{row['email_subject']}}<br><br>
+
+                                                        {{row['email_body'] | b64decode  | safe }}
+
+                                                    </div>
+
+
+                                                    <div class="modal-footer"><button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Ok</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        
+                                        
+                                        </td>
+                                        </tr>
+                                        {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+         
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Scroll to Top Button-->
+   
+
+   
+   
+    {% endblock %}
+   
+
+
+  
+
+
+   
+   
+
+
+ 
